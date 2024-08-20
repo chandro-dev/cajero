@@ -9,6 +9,7 @@ function App() {
   let i = 0;
   const calcularDenominaciones = () => {
     resultado.push([]);
+
     while (i < denominaciones.length) {
       if ((auxiliar + denominaciones[i]) > monto) {
         for (let j = i; j >= denominaciones.length; j--) {
@@ -25,15 +26,20 @@ function App() {
         i++;
       }
       if ((i == 4) && (auxiliar != monto)) {
+        if ((auxiliar + denominaciones[acarreo+1])>monto&& (monto-auxiliar)>=denominaciones[0]) {
+          acarreo = 0;
+          console.log(auxiliar + denominaciones[acarreo]);
+        }else{
+          acarreo++;
+        }
         resultado.push([]);
-        acarreo++;
         for (var g = 0; g < acarreo; g++) {
           resultado[resultado.length - 1][g] = 0;
         }
         i = acarreo;
       }
+
     }
-    console.log(resultado);
   }
   // Maneja el cambio en el campo de entrada
   const manejarCambio = (evento) => {
@@ -44,7 +50,7 @@ function App() {
     setMonto(nuevoMonto);
   };
 
-  calcularDenominaciones();
+  monto>=denominaciones[0] ? calcularDenominaciones() : console.log("es menor");;
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md md:max-w-lg text-center">
@@ -93,7 +99,7 @@ function App() {
         </div>
         <div className="mt-8">
           <h3 className="text-xl font-medium mb-4">Código del Componente</h3>
-          <CodigoEjemplo codigo={`// Tu código aquí...`} lenguaje="javascript" />
+          <CodigoEjemplo  />
         </div>
       </div>
     </div>
