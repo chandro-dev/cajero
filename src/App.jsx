@@ -27,8 +27,8 @@ function App() {
       if ((i == 4) && (auxiliar != monto)) {
         resultado.push([]);
         acarreo++;
-        for(var g=0;g<acarreo;g++){
-          resultado[resultado.length-1][g]=0; 
+        for (var g = 0; g < acarreo; g++) {
+          resultado[resultado.length - 1][g] = 0;
         }
         i = acarreo;
       }
@@ -46,40 +46,53 @@ function App() {
 
   calcularDenominaciones();
   return (
-    <>
-      <div className=" text-5xl	flex justify-center items-center min-h-screen">
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-          <h2><strong>Monto</strong>:<input
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+      <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md md:max-w-lg text-center">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4">Monto</h2>
+        <div className="mb-6">
+          <input
             type="number"
             value={monto}
             onChange={manejarCambio}
-          /></h2>
-          <table className="table-fixed">
+            className="w-full px-4 py-2 border rounded-lg text-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el monto"
+          />
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto">
             <thead>
               <tr>
                 {denominaciones.map((denominacion, index) => (
-                  <th className="p-2" key={index}>{denominacion}</th>
+                  <th
+                    className="p-2 bg-gray-200 text-sm md:text-base font-medium"
+                    key={index}
+                  >
+                    {denominacion}
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-
               {resultado.map((fila, filaIndex) => (
-                <tr key={filaIndex} className={fila}>
+                <tr
+                  key={filaIndex}
+                  className={filaIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+                >
                   {fila.map((denominacion, index) => (
-                    <td className="p-2" key={index}>{denominacion}</td>
+                    <td
+                      className="p-2 text-sm md:text-base text-center"
+                      key={index}
+                    >
+                      {denominacion}
+                    </td>
                   ))}
                 </tr>
               ))}
             </tbody>
-
           </table>
         </div>
-
-        {/**Comentario */}
       </div>
-    </>
+    </div>
   );
 }
-
 export default App;
