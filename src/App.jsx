@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import CodigoEjemplo from "./codigo";
 function App() {
   const [monto, setMonto] = useState(0);
   const denominaciones = [10, 20, 50, 100];
@@ -58,7 +58,7 @@ function App() {
             placeholder="Ingrese el monto"
           />
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mb-6">
           <table className="w-full table-auto">
             <thead>
               <tr>
@@ -90,6 +90,10 @@ function App() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="mt-8">
+          <h3 className="text-xl font-medium mb-4">Código del Componente</h3>
+          <CodigoEjemplo codigo={`// Tu código aquí...`} lenguaje="javascript" />
         </div>
       </div>
     </div>
