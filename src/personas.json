@@ -5,7 +5,11 @@
             "clave": "2020"
         },
         {
-            "cedular": "3108167406"
+            "cedular": "3108167406",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         },
         {
             "tarjeta": "40403030",
@@ -16,42 +20,66 @@
             "clave": "3434"
         },
         {
-            "cedular": "1234567890"
+            "cedular": "1234567890",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         },
         {
             "tarjeta": "60606060",
             "clave": "5656"
         },
         {
-            "cedular": "9876543210"
+            "cedular": "9876543210",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         },
         {
             "tarjeta": "70707070",
             "clave": "7878"
         },
         {
-            "cedular": "1122334455"
+            "cedular": "1122334455",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         },
         {
             "tarjeta": "80808080",
             "clave": "8989"
         },
         {
-            "cedular": "5566778899"
+            "cedular": "5566778899",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         },
         {
             "tarjeta": "90909090",
             "clave": "9090"
         },
         {
-            "cedular": "6677889900"
+            "cedular": "6677889900",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         },
         {
             "tarjeta": "10101010",
             "clave": "1010"
         },
         {
-            "cedular": "3344556677"
+            "cedular": "3344556677",
+            "codigo": {
+                "clave": "",
+                "expiracion": ""
+            }
         }
     ]
 }

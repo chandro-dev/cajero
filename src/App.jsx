@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
 
-        <Route path="Cajero" element={<CountdownTimer />} />
+        <Route path="cajero" element={<CountdownTimer />} />
         <Route path="/" element={<Login />}></Route>
         <Route path="GenerateCode" element={<GenerateCodigo />}></Route>
         <Route path="Personas" element={<ListaPersonas />}></Route>
