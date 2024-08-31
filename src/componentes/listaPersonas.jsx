@@ -1,14 +1,19 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import data from '../personas.json'; // Ajusta la ruta según la ubicación de tu archivo JSON
+import { useNavigate } from "react-router-dom";
 
 
 const ListaPersonas = () => {
+    const navigate = new useNavigate();
     const [personas, setPersonas] = useState([]);
 
     useEffect(() => {
         // Simula la carga de datos del JSON
         setPersonas(data.Personas);
     }, []);
+    const handleBack = () => {
+        navigate(-1); // Regresa a la página anterior
+      };
 
     return (
         <div>
@@ -30,6 +35,8 @@ const ListaPersonas = () => {
                     </li>
                 ))}
             </ul>
+            <button onClick={handleBack}>volver</button>
+
         </div>
     );
 };
