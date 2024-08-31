@@ -51,6 +51,9 @@ export default class RetirosServices {
             if ((auxiliar + this.denominaciones[acarreo]) > monto && (auxiliar + this.denominaciones[0]) <= monto) {
                 acarreo = 0
             }
+
+
+            
             console.log(resultado);
         }
 
