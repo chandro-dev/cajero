@@ -6,36 +6,16 @@ const CodigoEjemplo = () => {
   return (
     <div className="my-4 bg-gray-900 rounded-lg p-4 overflow-auto">
       <SyntaxHighlighter language="javascript" style={okaidia} showLineNumbers>
-        {`  const calcularDenominaciones = () => {
-    resultado.push([]);
-
-    while (i < denominaciones.length) {
-      if ((auxiliar + denominaciones[i]) > monto) {
-        for (let j = i; j >= denominaciones.length; j--) {
-          if (auxiliar + denominaciones[j] >= monto) {
+        {`  while (acarreo < this.denominaciones.length && auxiliar < monto) {
+            for (let j = acarreo; j < this.denominaciones.length; j++) {
+                if ((auxiliar + this.denominaciones[j]) <= monto) {
+                    auxiliar += this.denominaciones[j];
+                    resultado[resultado.length - 1].push(this.denominaciones[j]);
+                }
+            }
             resultado.push([]);
-            auxiliar += denominaciones[j];
-            resultado[resultado.length - 1].push(denominaciones[j]);
-          }
-        }
-        i++;
-      } else {
-        auxiliar += denominaciones[i];
-        resultado[resultado.length - 1].push(denominaciones[i]);
-        i++;
-      }
-      if ((i == 4) && (auxiliar != monto)) {
-        if ((auxiliar + denominaciones[acarreo+1])>monto&& (monto-auxiliar)>=denominaciones[0]) {
-          acarreo = 0;
-        }else{
-          acarreo++;
-        }
-        resultado.push([]);
-        i = acarreo;
-      }
-
-    }
-  }`}
+            acarreo++;
+              }`}
       </SyntaxHighlighter>
     </div>
   );

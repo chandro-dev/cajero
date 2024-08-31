@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import CodigoEjemplo from "./codigo";
 import { useNavigate } from 'react-router-dom';
+import retirosServices from '../servicios/retirosServices';
+const _retirosServices = new retirosServices();
 const CountdownTimer = () => {
     const navigate = useNavigate();
 
     const [monto, setMonto] = useState(0);
     const denominaciones = [10, 20, 50, 100];
-    let auxiliar = 0;
-    let resultado = [];
-    let acarreo = 0;
-    let i = 0;
+    const [resultado, setResultado] = useState([]);
 
-    const [seconds, setSeconds] = useState(30); // Empieza en 30 segundos
+    const [seconds, setSeconds] = useState(180); // Empieza en 30 segundos
     const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
+
         let interval = null;
         if (isActive && seconds > 0) {
             interval = setInterval(() => {
@@ -22,46 +22,16 @@ const CountdownTimer = () => {
             }, 1000);
         } else if (seconds === 0) {
             clearInterval(interval);
-            console.log("Tiempo terminado");
-            navigate("/Registro");
+            navigate("/");
             setIsActive(false);
         }
         return () => clearInterval(interval);
     }, [isActive, seconds]);
-    const calcularDenominaciones = () => {
-        resultado.push([]);
+    useEffect(() => {
+        setResultado([])
+        monto >= denominaciones[0] ? setResultado(_retirosServices.calcularDenominaciones(monto)) : console.log("");;
+    }, [monto])
 
-        while (i < denominaciones.length) {
-            if ((auxiliar + denominaciones[i]) > monto) {
-                for (let j = i; j >= denominaciones.length; j--) {
-                    if (auxiliar + denominaciones[j] >= monto) {
-                        resultado.push([]);
-                        auxiliar += denominaciones[j];
-                        resultado[resultado.length - 1].push(denominaciones[j]);
-                    }
-                }
-                i++;
-            } else {
-                auxiliar += denominaciones[i];
-                resultado[resultado.length - 1].push(denominaciones[i]);
-                i++;
-            }
-            if ((i == 4) && (auxiliar != monto)) {
-                if ((auxiliar + denominaciones[acarreo + 1]) > monto && (monto - auxiliar) >= denominaciones[0]) {
-                    acarreo = 0;
-                    console.log(auxiliar + denominaciones[acarreo]);
-                } else {
-                    acarreo++;
-                }
-                resultado.push([]);
-                for (var g = 0; g < acarreo; g++) {
-                    resultado[resultado.length - 1][g] = 0;
-                }
-                i = acarreo;
-            }
-
-        }
-    }
     // Maneja el cambio en el campo de entrada
     const manejarCambio = (evento) => {
         // Extrae el valor del campo de entrada y conviértelo a número
@@ -69,9 +39,9 @@ const CountdownTimer = () => {
 
         // Actualiza el estado con el nuevo monto
         setMonto(nuevoMonto);
+
     };
 
-    monto >= denominaciones[0] ? calcularDenominaciones() : console.log("es menor");;
     return (
         <>
             <div>{seconds}</div>
