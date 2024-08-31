@@ -34,7 +34,7 @@ export default class RetirosServices {
     }
 
     dispensarDinero(monto) {
-        monto=100;
+        monto = 100;
         const resultado = [];
         let auxiliar = 0;
         resultado.push([]);
@@ -48,9 +48,8 @@ export default class RetirosServices {
             }
             resultado.push([]);
             acarreo++;
-            
             if ((auxiliar + this.denominaciones[acarreo]) > monto && (auxiliar + this.denominaciones[0]) <= monto) {
-                 acarreo = 0
+                acarreo = 0
             }
             console.log(resultado);
         }
