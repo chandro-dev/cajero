@@ -8,6 +8,9 @@ const TipoEntrada = () => {
     const tarjeta = () => {
         navigate("/cajero/Validacion/Tarjeta");
     }
+    const Personas = () => {
+        navigate("/cajero/Personas");
+    }
     return (
         <div className="flex justify-center flex-col items-center min-h-screen bg-gradient-to-b from-blue-500 to-blue-700 p-4">
             <div className="bg-gray-200 shadow-lg p-6 rounded-lg w-full max-w-lg">
@@ -32,6 +35,12 @@ const TipoEntrada = () => {
                         onClick={tarjeta}
                     >
                         Retirar con Tarjeta
+                    </button>
+                    <button
+                        className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
+                        onClick={Personas}
+                    >
+                        Ver personas
                     </button>
                 </div>
             </div>

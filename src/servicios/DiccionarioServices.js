@@ -1,7 +1,4 @@
 import Personas from '../personas.json';
-
-
-
 export default class DiccionarioServices {
     Personas = [];
     constructor() {

@@ -52,7 +52,8 @@ const Validacion = () => {
 // eslint-disable-next-line react/prop-types
 const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
     const navigate = useNavigate();
-    const [codigo, setCodigo] = useState(null); // Código generado
+    const [codigo, setCodigo] = useState(null);
+    const [intentos, setIntentos] = useState(3);
     const validarNumero = () => {
         var result = validaciones.validarCelular(identificador);
         if (result != false) {
@@ -61,15 +62,22 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
             setCambiar(1);
         }
         else {
+            alert(`Cuenta no encontrada`);
             navigate("/Cajero")
         }
     }
     const validarCodigo = () => {
-        console.log(clave, codigo.code);
         if (clave == codigo.code) {
             navigate("/Cajero/Retiros");
         } else {
-            alert("Código incorrecto");
+            setIntentos(intentos - 1)
+            if (intentos <= 0) {
+                validaciones.bloquearCuenta("Nequi", '0' + identificador);
+                alert(`Tu Cuenta ha sido bloqueada`);
+
+                navigate("/cajero");
+            }
+            alert(`Código incorrecto te quedan =${intentos} intentos`);
         }
     }
     const [cambiar, setCambiar] = useState(0);
