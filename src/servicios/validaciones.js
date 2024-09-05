@@ -6,9 +6,9 @@ const diccionario = new DiccionarioServices();
 export default class validaciones {
     Telefonos = []
     tarjetas = []
-
     constructor() {
-        diccionario.getPersonas.forEach(element => {
+        console.log(diccionario.getPersonas());
+        diccionario.getPersonas().forEach(element => {
             if (element.tarjeta) {
                 this.tarjetas.push(element);
             }
@@ -23,7 +23,7 @@ export default class validaciones {
 
         let bandera = false;
         this.Telefonos.forEach(element => {
-            if (('0' + element.cedular) == numero && element.codigo == codigo) {
+            if (('0' + element.cedular) == ('0' + numero) && element.codigo == codigo) {
                 bandera = true;
                 return;
             }
@@ -31,14 +31,29 @@ export default class validaciones {
         return bandera;
 
     }
-    validarCelular() {
+    validarCelular(numero) {
 
+        let bandera = false;
+
+        this.Telefonos.forEach(element => {
+            if (('0' + element.cedular) == ('0' + numero)) {
+                element.codigo = { code: Math.floor(Math.random() * 1000000) + 1, fecha: new Date() };
+                bandera = element.codigo;
+                return ;
+            }
+        })
+        if (bandera == false) {
+            return bandera;
+        }else{
+            return bandera;
+        }
     }
     validacionTarjeta(NTarjeta, clave) {
 
         let bandera = false;
+        console.log(this.tarjetas);
         this.tarjetas.forEach(element => {
-            if (('0' + element.tarjeta) == NTarjeta && element.clave == clave) {
+            if (element.tarjeta == NTarjeta && element.clave == clave) {
                 bandera = true;
                 return;
             }

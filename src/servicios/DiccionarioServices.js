@@ -5,9 +5,8 @@ import Personas from '../personas.json';
 export default class DiccionarioServices {
     Personas = [];
     constructor() {
-        this.Personas = Personas;
+        this.Personas = Personas.Personas;
     }
-
     getPersonas() {
         return this.Personas;
     }

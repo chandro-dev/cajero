@@ -29,34 +29,32 @@ export default class RetirosServices {
                 i = acarreo;
             }
         }
-        this.dispensarDinero(monto);
-        return resultado;
+        return this.dispensarDinero(monto);
     }
 
     dispensarDinero(monto) {
-        monto = 100;
+
         const resultado = [];
-        let auxiliar = 0;
         resultado.push([]);
+
+        let auxiliar = 0;
         let acarreo = 0;
         while (acarreo < this.denominaciones.length && auxiliar < monto) {
             for (let j = acarreo; j < this.denominaciones.length; j++) {
+                console.log(auxiliar + this.denominaciones[j]);
                 if ((auxiliar + this.denominaciones[j]) <= monto) {
                     auxiliar += this.denominaciones[j];
                     resultado[resultado.length - 1].push(this.denominaciones[j]);
                 }
             }
-            resultado.push([]);
             acarreo++;
             if ((auxiliar + this.denominaciones[acarreo]) > monto && (auxiliar + this.denominaciones[0]) <= monto) {
                 acarreo = 0
             }
-
-
-            
-            console.log(resultado);
+            resultado.push([]);
         }
-
+        resultado.pop()
+        return resultado
     }
 }
 

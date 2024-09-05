@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
 import CodigoEjemplo from "./codigo";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import retirosServices from '../servicios/retirosServices';
 const _retirosServices = new retirosServices();
 const CountdownTimer = () => {
+    const { idUsuario } = useParams();
+
     const navigate = useNavigate();
 
     const [monto, setMonto] = useState(0);
     const denominaciones = [10, 20, 50, 100];
     const [resultado, setResultado] = useState([]);
 
-    const [seconds, setSeconds] = useState(180); // Empieza en 30 segundos
+    const [seconds, setSeconds] = useState(18000);
     const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
-
         let interval = null;
         if (isActive && seconds > 0) {
             interval = setInterval(() => {
@@ -27,10 +28,41 @@ const CountdownTimer = () => {
         }
         return () => clearInterval(interval);
     }, [isActive, seconds]);
+
     useEffect(() => {
-        setResultado([])
-        monto >= denominaciones[0] ? setResultado(_retirosServices.calcularDenominaciones(monto)) : console.log("");;
-    }, [monto])
+        if (monto >= denominaciones[0] && monto % 10 === 0) {
+            let montoReal = monto;
+            let ResultFinal = []
+            while (600 < montoReal) {
+                montoReal = montoReal - 100;
+                ResultFinal.push([0, 0, 0, 100]);
+            }
+            const resultadoCalculado = _retirosServices.calcularDenominaciones(montoReal);
+
+            // Inicializa 'nuevo' como una matriz vacía con el mismo tamaño que 'resultadoCalculado'
+            const nuevo = resultadoCalculado.map(fila => {
+                // Crea una matriz con 3 elementos, todos inicializados a 0
+                const filaTransformada = Array(3).fill(0);
+
+                fila.forEach(denominacion => {
+                    // Encuentra el índice de la denominación en la lista de denominaciones
+                    const index = denominaciones.indexOf(denominacion);
+
+                    // Si la denominación existe en la lista, asigna el valor a la posición correcta
+                    if (index !== -1) {
+                        filaTransformada[index] = denominacion;
+                    }
+                });
+
+                return filaTransformada;
+            });
+
+            setResultado(sumarMatrices(ResultFinal, nuevo));
+            console.log();
+        } else {
+            setResultado([]); // Limpiar resultado si el monto es menor que la denominación mínima
+        }
+    }, [monto]);
 
     // Maneja el cambio en el campo de entrada
     const manejarCambio = (evento) => {
@@ -41,6 +73,25 @@ const CountdownTimer = () => {
         setMonto(nuevoMonto);
 
     };
+    function sumarMatrices(matriz1, matriz2) {
+        try {
+            // Nueva matriz donde almacenaremos los resultados
+            const nuevo = [];
+
+            // Itera sobre las filas de las matrices
+
+            matriz2.forEach((fila) => {
+                nuevo.push(fila);
+            });
+            matriz1.forEach((fila) => {
+                nuevo.push(fila);
+            });
+            return nuevo;
+        } catch (error) {
+            console.error("Error al sumar matrices:", error.message);
+            return null; // Devuelve null si ocurre un error
+        }
+    }
 
     return (
         <>
@@ -73,16 +124,13 @@ const CountdownTimer = () => {
                             </thead>
                             <tbody>
                                 {resultado.map((fila, filaIndex) => (
-                                    <tr
-                                        key={filaIndex}
-                                        className={filaIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
-                                    >
-                                        {fila.map((denominacion, index) => (
+                                    <tr key={filaIndex}>
+                                        {denominaciones.map((denominacion, colIndex) => (
                                             <td
-                                                className="p-2 text-sm md:text-base text-center"
-                                                key={index}
+                                                key={colIndex}
+                                                className="p-2 border-b"
                                             >
-                                                {denominacion}
+                                                {fila[colIndex] || 0}
                                             </td>
                                         ))}
                                     </tr>
