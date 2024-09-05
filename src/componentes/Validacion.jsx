@@ -69,7 +69,7 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
     }
     const validarCodigo = () => {
         if (clave == codigo.code) {
-            navigate("/Cajero/Retiros");
+            navigate(`/Cajero/Retiros/${identificador}`);
         } else {
             setIntentos(intentos - 1)
             if (intentos <= 0) {
@@ -79,6 +79,15 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
                 navigate("/cajero");
             }
             alert(`Código incorrecto te quedan =${intentos} intentos`);
+        }
+    }
+    const setNumero=(valor)=>{
+        if (valor.toString().length    < 10) {
+            setIdentificador(valor);
+        }
+        else {
+            alert(`numero errado`);
+            navigate("/Cajero")
         }
     }
     const [cambiar, setCambiar] = useState(0);
@@ -91,7 +100,7 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
                         <h3 className="text-xl font-semibold mb-4 text-gray-700">Ingresar Número de Teléfono</h3>
                         <input
                             value={identificador}
-                            onChange={(e) => setIdentificador(e.target.value)}
+                            onChange={(e) => setNumero(e.target.value)}
                             type="number"
                             placeholder="Número de teléfono"
                             className="w-full border border-gray-300 p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -144,7 +153,16 @@ const Tarjeta = ({ identificador, setIdentificador, clave, setClave }) => {
     const [cambiar, setCambiar] = useState(false);
     const validar = () => {
         console.log(identificador, clave);
-        validaciones.validacionTarjeta(identificador, clave) ? navigate("/cajero/Retiros") : navigate("/");
+        validaciones.validacionTarjeta(identificador, clave) ? navigate(`/Cajero/Retiros/${identificador}`) : navigate("/");
+    }
+    const validarNumero = (tarjeta) => {
+        if (tarjeta.toString().length    < 11) {
+            setIdentificador(tarjeta);
+        }
+        else {
+            alert(`Tarjeta errada`);
+            navigate("/Cajero")
+        }
     }
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
@@ -154,7 +172,7 @@ const Tarjeta = ({ identificador, setIdentificador, clave, setClave }) => {
                         <h3 className="text-xl font-semibold mb-4 text-gray-700">Ingresar Tarjeta</h3>
                         <input
                             value={identificador}
-                            onChange={(e) => setIdentificador(e.target.value)}
+                            onChange={(e) => validarNumero(e.target.value)}
                             type="number"
                             placeholder="Número de tarjeta"
                             className="w-full border border-gray-300 p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"

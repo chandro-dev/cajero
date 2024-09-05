@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
-import CodigoEjemplo from "./codigo";
-import { useNavigate } from 'react-router-dom';
+//import CodigoEjemplo from "./codigo";
+import { useNavigate, useParams } from 'react-router-dom';
 import retirosServices from '../servicios/retirosServices';
 const _retirosServices = new retirosServices();
 const CountdownTimer = () => {
-
-
-
+    const { id } = useParams();
     const navigate = useNavigate();
-
+    if (!id) {
+        navigate("/");
+    }
     const [monto, setMonto] = useState(0);
     const denominaciones = [10, 20, 50, 100];
     const [resultado, setResultado] = useState([]);
-
-    const [seconds, setSeconds] = useState(60);
+    const [seconds, setSeconds] = useState(100);
     const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
@@ -41,16 +40,11 @@ const CountdownTimer = () => {
             }
             const resultadoCalculado = _retirosServices.calcularDenominaciones(montoReal);
 
-            // Inicializa 'nuevo' como una matriz vacía con el mismo tamaño que 'resultadoCalculado'
             const nuevo = resultadoCalculado.map(fila => {
-                // Crea una matriz con 3 elementos, todos inicializados a 0
                 const filaTransformada = Array(3).fill(0);
 
                 fila.forEach(denominacion => {
-                    // Encuentra el índice de la denominación en la lista de denominaciones
                     const index = denominaciones.indexOf(denominacion);
-
-                    // Si la denominación existe en la lista, asigna el valor a la posición correcta
                     if (index !== -1) {
                         filaTransformada[index] = denominacion;
                     }
@@ -66,22 +60,17 @@ const CountdownTimer = () => {
         }
     }, [monto]);
 
-    // Maneja el cambio en el campo de entrada
     const manejarCambio = (evento) => {
-        // Extrae el valor del campo de entrada y conviértelo a número
         const nuevoMonto = parseFloat(evento.target.value);
-
-        // Actualiza el estado con el nuevo monto
-        setMonto(nuevoMonto);
-
+        if (nuevoMonto > 2000) {
+            alert("Valor al monto mayor permitido")
+        } else {
+            setMonto(nuevoMonto);
+        }
     };
     function sumarMatrices(matriz1, matriz2) {
         try {
-            // Nueva matriz donde almacenaremos los resultados
             const nuevo = [];
-
-            // Itera sobre las filas de las matrices
-
             matriz2.forEach((fila) => {
                 nuevo.push(fila);
             });
@@ -91,13 +80,18 @@ const CountdownTimer = () => {
             return nuevo;
         } catch (error) {
             console.error("Error al sumar matrices:", error.message);
-            return null; // Devuelve null si ocurre un error
+            return null;
         }
     }
     const montosPredeterminados = [100, 50, 500, 1000, 300, 200];
 
     const establecerMonto = (valor) => {
-        setMonto(valor);
+        if (valor > 2000) {
+            alert("Valor al monto mayor permitido")
+        } else {
+            setMonto(valor);
+
+        }
     };
 
     return (
@@ -132,7 +126,21 @@ const CountdownTimer = () => {
                             placeholder="Ingrese el monto"
                         />
                     </div>
-                    <div className="overflow-x-auto mb-6">
+
+
+                    <button
+                        className="
+    bg-gradient-to-r from-green-400 to-green-600
+    text-white font-semibold py-3 px-6
+    rounded-full shadow-lg
+    transform transition-all duration-300 ease-in-out
+    hover:shadow-xl hover:scale-105
+    focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-50
+    mb-2
+  "
+                    >
+                        Retirar
+                    </button>                    <div className="overflow-x-auto mb-6">
                         <table className="w-full table-auto">
                             <thead>
                                 <tr>
