@@ -25,6 +25,7 @@ const Validacion = () => {
             setShowWarning(true);
             interval = setInterval(() => {
                 setShowWarning(false);
+                alert('Se acabo el tiempo')
                 navigate("/Cajero");
                 setIsActive(false);
             }, 3000);

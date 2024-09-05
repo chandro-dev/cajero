@@ -6,13 +6,16 @@ const _retirosServices = new retirosServices();
 const CountdownTimer = () => {
     const {      } = useParams();
 
+
+
+
     const navigate = useNavigate();
 
     const [monto, setMonto] = useState(0);
     const denominaciones = [10, 20, 50, 100];
     const [resultado, setResultado] = useState([]);
 
-    const [seconds, setSeconds] = useState(18000);
+    const [seconds, setSeconds] = useState(10);
     const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
@@ -23,6 +26,7 @@ const CountdownTimer = () => {
             }, 1000);
         } else if (seconds === 0) {
             clearInterval(interval);
+            alert('Se acabo el tiempo')
             navigate("/");
             setIsActive(false);
         }
