@@ -65,7 +65,7 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
         }
     }
     const validarCodigo = () => {
-        console.log(clave,codigo.code);
+        console.log(clave, codigo.code);
         if (clave == codigo.code) {
             navigate("/Cajero/Retiros");
         } else {
@@ -75,36 +75,55 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
     const [cambiar, setCambiar] = useState(0);
 
     return (
-        <div>
-            {cambiar === 0 ? (
-                <div>
-                    <h3>Ingresar Número de teléfono</h3>
-                    <input
-                        value={identificador}
-                        onChange={(e) => setIdentificador(e.target.value)}
-                        type='number'
-                        className='border border-xl'
-                    />
-                    <button onClick={validarNumero}>Siguiente</button>
-                </div>
-            ) : cambiar === 1 ? (
-                <div>
-                    <h3>Su código es: {codigo.code}</h3>
-                    <p>Por favor ingrese el código para continuar.</p>
-                    <button onClick={() => setCambiar(2)}>Ingresar Código</button>
-                </div>
-            ) : (
-                <div>
-                    <h3>Ingresar Código</h3>
-                    <input
-                        value={clave}
-                        onChange={(e) => setClave(e.target.value)}
-                        type='text'
-                        className='border border-xl'
-                    />
-                    <button onClick={validarCodigo}>Validar</button>
-                </div>
-            )}
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+            <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-md">
+                {cambiar === 0 ? (
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">Ingresar Número de Teléfono</h3>
+                        <input
+                            value={identificador}
+                            onChange={(e) => setIdentificador(e.target.value)}
+                            type="number"
+                            placeholder="Número de teléfono"
+                            className="w-full border border-gray-300 p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button
+                            onClick={validarNumero}
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300"
+                        >
+                            Siguiente
+                        </button>
+                    </div>
+                ) : cambiar === 1 ? (
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">Su código es: {codigo.code}</h3>
+                        <p className="text-gray-600 mb-4">Por favor ingrese el código para continuar.</p>
+                        <button
+                            onClick={() => setCambiar(2)}
+                            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300"
+                        >
+                            Ingresar Código
+                        </button>
+                    </div>
+                ) : (
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">Ingresar Código</h3>
+                        <input
+                            value={clave}
+                            onChange={(e) => setClave(e.target.value)}
+                            type="text"
+                            placeholder="Código"
+                            className="w-full border border-gray-300 p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button
+                            onClick={validarCodigo}
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300"
+                        >
+                            Validar
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
@@ -119,31 +138,44 @@ const Tarjeta = ({ identificador, setIdentificador, clave, setClave }) => {
         validaciones.validacionTarjeta(identificador, clave) ? navigate("/cajero/Retiros") : navigate("/");
     }
     return (
-        <div>
-            {!cambiar ? (
-                <div>
-                    <h3>Ingresar Tarjeta</h3>
-                    <input
-                        value={identificador}
-                        onChange={(e) => setIdentificador(e.target.value)}
-                        type='number'
-                        className='border border-xl'
-                    />
-                    <button onClick={() => setCambiar(true)}>Siguiente</button>
-                </div>
-            ) : (
-                <div>
-                    <h3>Ingresar clave</h3>
-                    <button onClick={() => validar()}>ConfirmarClave</button>
-
-                    <input
-                        value={clave}
-                        onChange={(e) => setClave(e.target.value)}
-                        type='password'
-                        className='border border-xl'
-                    />
-                </div>
-            )}
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+            <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-md">
+                {!cambiar ? (
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">Ingresar Tarjeta</h3>
+                        <input
+                            value={identificador}
+                            onChange={(e) => setIdentificador(e.target.value)}
+                            type="number"
+                            placeholder="Número de tarjeta"
+                            className="w-full border border-gray-300 p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button
+                            onClick={() => setCambiar(true)}
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300"
+                        >
+                            Siguiente
+                        </button>
+                    </div>
+                ) : (
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">Ingresar Clave</h3>
+                        <input
+                            value={clave}
+                            onChange={(e) => setClave(e.target.value)}
+                            type="password"
+                            placeholder="Clave"
+                            className="w-full border border-gray-300 p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button
+                            onClick={() => validar()}
+                            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300"
+                        >
+                            Confirmar Clave
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 

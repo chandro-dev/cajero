@@ -23,7 +23,7 @@ export default class validaciones {
 
         let bandera = false;
         this.Telefonos.forEach(element => {
-            if (('0' + element.cedular) == ('0' + numero) && element.codigo == codigo) {
+            if ((element.cedular) == ('0' + numero) && element.codigo == codigo) {
                 bandera = true;
                 return;
             }
@@ -32,19 +32,17 @@ export default class validaciones {
 
     }
     validarCelular(numero) {
-
         let bandera = false;
-
         this.Telefonos.forEach(element => {
-            if (('0' + element.cedular) == ('0' + numero)) {
+            if ((element.cedular) == ('0' + numero)) {
                 element.codigo = { code: Math.floor(Math.random() * 1000000) + 1, fecha: new Date() };
                 bandera = element.codigo;
-                return ;
+                return;
             }
         })
         if (bandera == false) {
             return bandera;
-        }else{
+        } else {
             return bandera;
         }
     }
@@ -53,7 +51,7 @@ export default class validaciones {
         let bandera = false;
         console.log(this.tarjetas);
         this.tarjetas.forEach(element => {
-            if (element.tarjeta == NTarjeta && element.clave == clave) {
+            if (element.tarjeta == NTarjeta && element.clave.clave == clave) {
                 bandera = true;
                 return;
             }

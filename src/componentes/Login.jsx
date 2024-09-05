@@ -3,26 +3,40 @@ import { useNavigate } from "react-router-dom";
 const TipoEntrada = () => {
     const navigate = new useNavigate();
     const nequi = () => {
-        navigate("Validacion/Nequi");
+        navigate("/cajero/Validacion/Nequi");
     }
-    const Tarjeta = () => {
-        navigate("Validacion/Tarjeta");
+    const tarjeta = () => {
+        navigate("/cajero/Validacion/Tarjeta");
     }
-    return <>
-        <div className="flex justify-center flex-col items-center min-h-screen bg-gray-100 p-4">
-            <div className="border p-4 rounded-lg">
-                <div className="grid gap-3">
-                    <h1>Bienvenido al Cajero falso</h1>
-
-                    <img src="https://revistaseguridad360.com/wp-content/uploads/2022/03/cajero.jpg"></img>
-                    <h3>Opciones dentro del cajero</h3>
-                    <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" onClick={nequi}>Retirar Nequi</button>
-                    <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" onClick={Tarjeta}>Retirar Tarjeta</button>
+    return (
+        <div className="flex justify-center flex-col items-center min-h-screen bg-gradient-to-b from-blue-500 to-blue-700 p-4">
+            <div className="bg-gray-200 shadow-lg p-6 rounded-lg w-full max-w-lg">
+                <div className="text-center">
+                    <h1 className="text-3xl font-bold mb-4 text-gray-800">Bienvenido al Cajero</h1>
+                    <img
+                        src="https://revistaseguridad360.com/wp-content/uploads/2022/03/cajero.jpg"
+                        alt="Cajero Automático"
+                        className="w-full h-64 object-cover mb-4 rounded-lg shadow-md"
+                    />
+                    <h3 className="text-xl font-semibold text-gray-700 mb-4">Seleccione una opción</h3>
+                </div>
+                <div className="grid grid-cols-1 gap-4">
+                    <button
+                        className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
+                        onClick={nequi}
+                    >
+                        Retirar con Nequi
+                    </button>
+                    <button
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
+                        onClick={tarjeta}
+                    >
+                        Retirar con Tarjeta
+                    </button>
                 </div>
             </div>
-
         </div>
-    </>
+    );
 }
 
 

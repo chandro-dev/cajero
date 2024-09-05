@@ -8,36 +8,55 @@ const ListaPersonas = () => {
     const [personas, setPersonas] = useState([]);
 
     useEffect(() => {
-        // Simula la carga de datos del JSON
         setPersonas(data.Personas);
     }, []);
     const handleBack = () => {
-        navigate(-1); // Regresa a la página anterior
+        navigate("/cajero");
       };
 
     return (
-        <div>
-            <h1>Lista de Personas</h1>
-            <ul>
-                {personas.map((persona, index) => (
-                    <li key={index}>
-                        {persona.tarjeta ? (
-                            <div>
-                                <strong>Tarjeta:</strong> {persona.tarjeta}
-                                <br />
-                                <strong>Clave:</strong> {persona.clave || 'No disponible'}
-                            </div>
-                        ) : (
-                            <div>
-                                <strong>Cedular:</strong> {persona.cedular || 'No disponible'}
-                            </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
-            <button onClick={handleBack}>volver</button>
-
+        <div className="min-h-screen bg-gray-100 p-6">
+        <h1 className="text-3xl font-bold mb-6 text-center">Lista de Personas</h1>
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {personas.map((persona, index) => (
+                <li key={index} className="bg-white shadow-md rounded-lg p-4 border">
+                    {persona.tarjeta ? (
+                        <div className="text-gray-700">
+                            <strong className="text-xl">Tarjeta:</strong> {persona.tarjeta}
+                            <br />
+                            <strong className="text-lg">Clave:</strong> {persona.clave.clave || 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Expiración:</strong> {persona.clave.expiracion || 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Saldo:</strong> {persona.clave.saldo ? `$${persona.clave.saldo}` : 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Bloqueada:</strong> {persona.clave.bloqueada ? 'Sí' : 'No'}
+                        </div>
+                    ) : (
+                        <div className="text-gray-700">
+                            <strong className="text-xl">Celular:</strong> {persona.cedular || 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Clave:</strong> {persona.clave.clave || 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Expiración:</strong> {persona.clave.expiracion || 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Saldo:</strong> {persona.clave.saldo ? `$${persona.clave.saldo}` : 'No disponible'}
+                            <br />
+                            <strong className="text-lg">Bloqueada:</strong> {persona.clave.bloqueada ? 'Sí' : 'No'}
+                        </div>
+                    )}
+                </li>
+            ))}
+        </ul>
+        <div className="mt-6 text-center">
+            <button
+                onClick={handleBack}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg"
+            >
+                Volver
+            </button>
         </div>
+    </div>
     );
 };
 

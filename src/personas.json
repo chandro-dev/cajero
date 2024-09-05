@@ -1,84 +1,138 @@
 {
     "Personas": [
         {
-            "tarjeta": "20203030",
-            "clave": "2020"
-        },
-        {
-            "cedular": "3108167406",
-            "codigo": {
-                "clave": "",
-                "expiracion": ""
+            "tarjeta": "555555555555444",
+            "clave": {
+                "clave": "2020",
+                "expiracion": "12/26",
+                "saldo": 1000,
+                "bloqueada": false
             }
         },
         {
-            "tarjeta": "40403030",
-            "clave": "1212"
-        },
-        {
-            "tarjeta": "50505050",
-            "clave": "3434"
-        },
-        {
-            "cedular": "1234567890",
-            "codigo": {
+            "cedular": "03000000001",
+            "clave": {
                 "clave": "",
-                "expiracion": ""
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
             }
         },
         {
-            "tarjeta": "60606060",
-            "clave": "5656"
-        },
-        {
-            "cedular": "9876543210",
-            "codigo": {
-                "clave": "",
-                "expiracion": ""
+            "tarjeta": "411111111111111",
+            "clave": {
+                "clave": "1212",
+                "expiracion": "12/26",
+                "saldo": 1500,
+                "bloqueada": false
             }
         },
         {
-            "tarjeta": "70707070",
-            "clave": "7878"
-        },
-        {
-            "cedular": "1122334455",
-            "codigo": {
-                "clave": "",
-                "expiracion": ""
+            "tarjeta": "510510510510510",
+            "clave": {
+                "clave": "3434",
+                "expiracion": "11/25",
+                "saldo": 800,
+                "bloqueada": false
             }
         },
         {
-            "tarjeta": "80808080",
-            "clave": "8989"
-        },
-        {
-            "cedular": "5566778899",
-            "codigo": {
+            "cedular": "03108167406",
+            "clave": {
                 "clave": "",
-                "expiracion": ""
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
             }
         },
         {
-            "tarjeta": "90909090",
-            "clave": "9090"
-        },
-        {
-            "cedular": "6677889900",
-            "codigo": {
-                "clave": "",
-                "expiracion": ""
+            "tarjeta": "555555555555555",
+            "clave": {
+                "clave": "5656",
+                "expiracion": "08/24",
+                "saldo": 3000,
+                "bloqueada": false
             }
         },
         {
-            "tarjeta": "10101010",
-            "clave": "1010"
+            "cedular": "03000000003",
+            "clave": {
+                "clave": "",
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
+            }
         },
         {
-            "cedular": "3344556677",
-            "codigo": {
+            "tarjeta": "401288888888188",
+            "clave": {
+                "clave": "7878",
+                "expiracion": "05/23",
+                "saldo": 2200,
+                "bloqueada": false
+            }
+        },
+        {
+            "cedular": "03000000004",
+            "clave": {
                 "clave": "",
-                "expiracion": ""
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
+            }
+        },
+        {
+            "tarjeta": "4222222222222",
+            "clave": {
+                "clave": "8989",
+                "expiracion": "07/24",
+                "saldo": 2500,
+                "bloqueada": false
+            }
+        },
+        {
+            "cedular": "03000000005",
+            "clave": {
+                "clave": "",
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
+            }
+        },
+        {
+            "tarjeta": "511111111111111",
+            "clave": {
+                "clave": "9090",
+                "expiracion": "04/24",
+                "saldo": 100,
+                "bloqueada": false
+            }
+        },
+        {
+            "cedular": "03000000006",
+            "clave": {
+                "clave": "",
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
+            }
+        },
+        {
+            "tarjeta": "411111111111112",
+            "clave": {
+                "clave": "1010",
+                "expiracion": "09/23",
+                "saldo": 5000,
+                "bloqueada": false
+            }
+        },
+        {
+            "cedular": "03000000007",
+            "clave": {
+                "clave": "",
+                "expiracion": "",
+                "saldo": 0,
+                "bloqueada": false
             }
         }
     ]
