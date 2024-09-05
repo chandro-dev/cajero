@@ -7,12 +7,11 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/cajero" element={<Login />}></Route>
+        <Route path="/cajero/Retiros" element={<CountdownTimer />} />
 
-        <Route path="cajero" element={<CountdownTimer />} />
-        <Route path="/" element={<Login />}></Route>
-        <Route path="Personas" element={<ListaPersonas />}></Route>
-        <Route path="/Validacion/:Tipo" element={<Validacion />}></Route>
-
+        <Route path="/cajero/Personas" element={<ListaPersonas />}></Route>
+        <Route path="/cajero/Validacion/:Tipo" element={<Validacion />}></Route>
       </Routes>
     </Router>
   );

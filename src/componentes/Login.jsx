@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 const TipoEntrada = () => {
     const navigate = new useNavigate();
     const nequi = () => {
-        navigate("/Validacion/Nequi");
+        navigate("Validacion/Nequi");
     }
     const Tarjeta = () => {
-        navigate("/Validacion/Tarjeta");
+        navigate("Validacion/Tarjeta");
     }
     return <>
         <div className="flex justify-center flex-col items-center min-h-screen bg-gray-100 p-4">

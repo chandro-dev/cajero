@@ -25,7 +25,7 @@ const Validacion = () => {
             setShowWarning(true);
             interval = setInterval(() => {
                 setShowWarning(false);
-                navigate("/");
+                navigate("/Cajero");
                 setIsActive(false);
             }, 3000);
         }
@@ -61,13 +61,13 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
             setCambiar(1);
         }
         else {
-            navigate("/")
+            navigate("/Cajero")
         }
     }
     const validarCodigo = () => {
         console.log(clave,codigo.code);
         if (clave == codigo.code) {
-            navigate("/cajero");
+            navigate("/Cajero/Retiros");
         } else {
             alert("Código incorrecto");
         }
@@ -116,7 +116,7 @@ const Tarjeta = ({ identificador, setIdentificador, clave, setClave }) => {
     const [cambiar, setCambiar] = useState(false);
     const validar = () => {
         console.log(identificador, clave);
-        validaciones.validacionTarjeta(identificador, clave) ? navigate("/cajero") : navigate("/");
+        validaciones.validacionTarjeta(identificador, clave) ? navigate("/cajero/Retiros") : navigate("/");
     }
     return (
         <div>
