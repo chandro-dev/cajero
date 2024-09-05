@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import CodigoEjemplo from "./codigo";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import retirosServices from '../servicios/retirosServices';
 const _retirosServices = new retirosServices();
 const CountdownTimer = () => {
-    const {      } = useParams();
-
 
 
 
@@ -15,7 +13,7 @@ const CountdownTimer = () => {
     const denominaciones = [10, 20, 50, 100];
     const [resultado, setResultado] = useState([]);
 
-    const [seconds, setSeconds] = useState(10);
+    const [seconds, setSeconds] = useState(60);
     const [isActive, setIsActive] = useState(true);
 
     useEffect(() => {
@@ -107,10 +105,10 @@ const CountdownTimer = () => {
             <div>{seconds}</div>
             <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
                 <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md md:max-w-lg text-center">
-                    
-                    
-                    
-                <div className="mb-6">
+
+
+
+                    <div className="mb-6">
                         <h3 className="text-lg font-medium mb-2">Montos Predeterminados</h3>
                         <div className="flex justify-around">
                             {montosPredeterminados.map((valor, index) => (
