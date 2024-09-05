@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import retirosServices from '../servicios/retirosServices';
 const _retirosServices = new retirosServices();
 const CountdownTimer = () => {
-    const { idUsuario } = useParams();
+    const {      } = useParams();
 
     const navigate = useNavigate();
 
@@ -92,12 +92,34 @@ const CountdownTimer = () => {
             return null; // Devuelve null si ocurre un error
         }
     }
+    const montosPredeterminados = [100, 50, 500, 1000, 300, 200];
+
+    const establecerMonto = (valor) => {
+        setMonto(valor);
+    };
 
     return (
         <>
             <div>{seconds}</div>
             <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
                 <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md md:max-w-lg text-center">
+                    
+                    
+                    
+                <div className="mb-6">
+                        <h3 className="text-lg font-medium mb-2">Montos Predeterminados</h3>
+                        <div className="flex justify-around">
+                            {montosPredeterminados.map((valor, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => establecerMonto(valor)}
+                                    className="px-4 py-2 bg-blue-500 text-white rounded-lg focus:outline-none hover:bg-blue-600"
+                                >
+                                    {valor}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                     <h2 className="text-2xl md:text-3xl font-semibold mb-4">Monto</h2>
                     <div className="mb-6">
                         <input
@@ -138,10 +160,10 @@ const CountdownTimer = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="mt-8">
+                    {/* <div className="mt-8">
                         <h3 className="text-xl font-medium mb-4">Código del Componente</h3>
                         <CodigoEjemplo />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
