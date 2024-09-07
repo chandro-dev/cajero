@@ -81,8 +81,8 @@ const Nequi = ({ identificador, setIdentificador, clave, setClave }) => {
             alert(`Código incorrecto te quedan =${intentos} intentos`);
         }
     }
-    const setNumero=(valor)=>{
-        if (valor.toString().length    < 10) {
+    const setNumero = (valor) => {
+        if (valor.toString().length < 11) {
             setIdentificador(valor);
         }
         else {
@@ -156,7 +156,7 @@ const Tarjeta = ({ identificador, setIdentificador, clave, setClave }) => {
         validaciones.validacionTarjeta(identificador, clave) ? navigate(`/Cajero/Retiros/${identificador}`) : navigate("/");
     }
     const validarNumero = (tarjeta) => {
-        if (tarjeta.toString().length    < 11) {
+        if (tarjeta.toString().length < 12) {
             setIdentificador(tarjeta);
         }
         else {

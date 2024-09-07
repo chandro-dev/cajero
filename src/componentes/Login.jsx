@@ -28,13 +28,13 @@ const TipoEntrada = () => {
                         className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
                         onClick={nequi}
                     >
-                        Retirar con Nequi
+                        Retirar con Nequi.
                     </button>
                     <button
                         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"
                         onClick={tarjeta}
                     >
-                        Retirar con Tarjeta
+                        Retirar con cuenta.
                     </button>
                     <button
                         className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"

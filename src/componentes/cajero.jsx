@@ -31,6 +31,7 @@ const CountdownTimer = () => {
     }, [isActive, seconds]);
 
     useEffect(() => {
+
         if (monto >= denominaciones[0] && monto % 10 === 0) {
             let montoReal = monto;
             let ResultFinal = []
@@ -62,13 +63,13 @@ const CountdownTimer = () => {
 
     const manejarCambio = (evento) => {
         const nuevoMonto = parseFloat(evento.target.value);
-        if (nuevoMonto > 2000) {
+        if (nuevoMonto > 2500) {
             alert("Valor al monto mayor permitido")
         } else {
             setMonto(nuevoMonto);
         }
     };
-    function sumarMatrices(matriz1, matriz2) {
+    const sumarMatrices = (matriz1, matriz2) => {
         try {
             const nuevo = [];
             matriz2.forEach((fila) => {
@@ -93,6 +94,19 @@ const CountdownTimer = () => {
 
         }
     };
+    const imprimirrecibo = () => {
+
+            if (monto < 2500 && id && monto > 0 && monto % 10 === 0) {
+
+                if (id[0] != 3) {
+                    navigate(`/cajero/recibo/${id}/${monto}`)
+                } else {
+                    navigate(`/cajero/recibo/0${id}/${monto}`)
+                }   
+        }else{
+            alert("Valor errado")
+        }
+    }
 
     return (
         <>
@@ -127,7 +141,7 @@ const CountdownTimer = () => {
                         />
                     </div>
 
-
+                            <p>Valor maximo de retiro 2500  </p>
                     <button
                         className="
     bg-gradient-to-r from-green-400 to-green-600
@@ -137,7 +151,7 @@ const CountdownTimer = () => {
     hover:shadow-xl hover:scale-105
     focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-50
     mb-2
-  "
+  " onClick={imprimirrecibo}
                     >
                         Retirar
                     </button>                    <div className="overflow-x-auto mb-6">
